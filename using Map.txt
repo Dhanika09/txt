@@ -1,0 +1,194 @@
+1.Write a program to count the frequency of each word in a given text using std::map.
+
+#include <iostream>
+#include <string>
+#include <map>
+#include <sstream>
+using namespace std;
+
+void countWordFrequency(const string & text){
+    map<string,int> wordCount;
+    
+    istringstream stream(text);
+    string word;
+    while (stream >> word) {
+        ++wordCount[word];
+    }
+    for(map<string,int>::iterator it = wordCount.begin();it != wordCount.end(); ++it){
+        cout << it->first << " : " << it->second << endl;
+    }
+}
+int main()
+{
+    string text = "This is sample text with several words this is a test text";
+    countWordFrequency(text);
+    return 0;
+}
+
+2.Implement a function to check if two maps contain the same key-value pairs.
+
+#include <iostream>
+#include <map>
+using namespace std;
+
+
+template <typename K,typename V>
+bool areMapsEqual(const map<K,V>& map1,const map<K,V>& map2) {
+    if(map1.size() != map2.size()){
+        return false;
+    }
+    for (typename map<K,V>::const_iterator it = map1.begin();it != map1.end();++it) {
+        if(map2.find(it->first) == map2.end() || map2.at(it->first) != it->second) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    map<string, int> map1 ={{"a",1},{"b",2},{"c",3},{"d",4}};
+    map<string, int> map2 ={{"a",1},{"b",2},{"c",3},{"d",4}};
+    map<string, int> map3 ={{"a",1},{"b",2},{"c",9},{"d",4}};
+    
+    if(areMapsEqual(map1, map2)) {
+        cout << "map1 and map2 are equal."<< endl;
+    } else {
+        cout << "map1 and map2 are not equal."<< endl;
+    }
+    
+    if(areMapsEqual(map1, map3)) {
+        cout << "map1 and map3 are equal." << endl;
+    } else {
+        cout << "map1 and map3 are not equal."<<endl;
+    }
+    return 0;
+}
+
+3. Create a program to find the key with the maximum value in a map.
+
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main()
+{
+    map<int, int> myMap;
+    myMap[1] = 10;
+    myMap[2] = 20;
+    myMap[3] = 30;
+    myMap[4] = 40;
+    myMap[5] = 50;
+    
+    if (myMap.empty()){
+        cout << "Map is empty." << endl;
+        return 0;
+    }
+    
+    map<int, int>::iterator it = myMap.begin();
+    int maxKey = it-> first;
+    int maxValue = it->second;
+    
+    for(map<int,int>::iterator itr = myMap.begin(); itr!=myMap.end();itr++){
+        if(itr->second > maxValue) {
+            maxKey = itr->first;
+            maxValue = itr->second;
+        }
+    }
+    
+    cout << "The key with max value is : "<< maxKey << " the value is : "<< maxValue << endl;
+    return 0;
+}
+
+
+4. Create a program to simulate a basic phonebook using a map (name to phone number mapping) and allow operations like adding a contact, removing a contact, and searching for a contact.
+
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+void addContact(map<string, string>& phonebook){
+    string name, phoneNumber;
+    cout << "Enter name : ";
+    getline(cin,name);
+    cout << "Enter number : ";
+    getline(cin,phoneNumber);
+    phonebook[name] = phoneNumber;
+    cout << "Contact added sucessfully.\n";
+}
+
+void removeContact(map<string, string>& phonebook){
+    string name;
+    cout << "Enter name to remove : ";
+    getline(cin, name);
+    map<string, string>::iterator it = phonebook.find(name);
+    if (it != phonebook.end()){
+        phonebook.erase(it);
+        cout << "Contact removed sucessfully.\n";
+    } else{
+        cout << "Contact not found.\n";
+    }
+}
+
+void searchContact(map<string, string>& phonebook){
+    string name;
+    cout << "Enter name to search : ";
+    getline(cin, name);
+    map<string, string>::const_iterator  it = phonebook.find(name);
+    if (it != phonebook.end()) {
+        cout << "Phone number : " << it -> second << endl;
+    } else{
+        cout << "Contact not found!.\n "<< endl;
+    }
+    
+}
+
+void displayContacts(map<string, string>& phonebook){
+    if(phonebook.empty()){
+        cout << "Phonebook is empty.\n " << endl;
+    } else{
+        cout << "Contacts :\n";
+        for(map<string, string>::const_iterator it = phonebook.begin(); it != phonebook.end(); ++it){
+            cout << "Name : " << it -> first << " , Phone Number : " << it -> second << endl;
+        }
+    }
+    
+}
+
+int main() {
+    map<string, string> phonebook;
+    int choice;
+    
+    do{
+        cout << "Phonebook Menu :  \n";
+        cout << "  1. Add Contact\n ";
+        cout << " 2. RemoveContact\n ";
+        cout << " 3. SearchContact\n ";
+        cout << " 4. Display all Contacts\n ";
+        cout << " 5. Exit\n";
+        cout << "Enter Your Choice : ";
+        cin >> choice;
+        cin.ignore();
+        
+        switch(choice) {
+            case 1: 
+            addContact(phonebook);
+            break;
+            case 2: 
+            removeContact(phonebook);
+            break;
+            case 3: 
+            searchContact(phonebook);
+            break;
+            case 4:
+            displayContacts(phonebook);
+            break;
+            case 5:
+            cout << "Exiting Programme.\n";
+            break;
+            default :
+            cout << "Invalid Choice. Please try again.\n ";
+        }
+    } while(choice != 5);
+    return 0;
+}
