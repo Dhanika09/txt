@@ -1,0 +1,148 @@
+1.Fabino seris
+
+using System;  
+  public class FibonacciExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+         int n1=0,n2=1,n3,i,number;    
+         Console.Write("Enter the number of elements: ");    
+         number = int.Parse(Console.ReadLine());  
+         Console.Write(n1+" "+n2+" "); //printing 0 and 1    
+         for(i=2;i<number;++i) //loop starts from 2 because 0 and 1 are already printed    
+         {    
+          n3=n1+n2;    
+          Console.Write(n3+" ");    
+          n1=n2;    
+          n2=n3;    
+         }    
+      }  
+   }  
+
+2.prime num
+
+using System;  
+  public class PrimeNumberExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+          int n, i, m=0, flag=0;    
+          Console.Write("Enter the Number to check Prime: ");    
+          n = int.Parse(Console.ReadLine());  
+          m=n/2;    
+          for(i = 2; i <= m; i++)    
+          {    
+           if(n % i == 0)    
+            {    
+             Console.Write("Number is not Prime.");    
+             flag=1;    
+             break;    
+            }    
+          }    
+          if (flag==0)    
+           Console.Write("Number is Prime.");       
+     }  
+   }  
+
+
+3.palindrome
+
+using System;  
+  public class PalindromeExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+          int n,r,sum=0,temp;    
+          Console.Write("Enter the Number: ");   
+          n = int.Parse(Console.ReadLine());  
+          temp=n;      
+          while(n>0)      
+          {      
+           r=n%10;      
+           sum=(sum*10)+r;      
+           n=n/10;      
+          }      
+          if(temp==sum)      
+           Console.Write("Number is Palindrome.");      
+          else      
+           Console.Write("Number is not Palindrome");     
+    }  
+  }  
+
+4.Factorial
+
+using System;  
+  public class FactorialExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+       int i,fact=1,number;      
+       Console.Write("Enter any Number: ");      
+       number= int.Parse(Console.ReadLine());     
+       for(i=1;i<=number;i++){      
+        fact=fact*i;      
+       }      
+       Console.Write("Factorial of " +number+" is: "+fact);    
+     }  
+  }  
+
+5.swap
+
+using System;  
+  public class SwapExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+       int  a=5, b=10;            
+       Console.WriteLine("Before swap a= "+a+" b= "+b);    
+       a=a*b; //a=50 (5*10)      
+       b=a/b; //b=5 (50/10)      
+       a=a/b; //a=10 (50/5)    
+       Console.Write("After swap a= "+a+" b= "+b);       
+     }  
+  }   
+
+6.sum of digits 
+
+using System;  
+  public class SumExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+       int  n,sum=0,m;         
+       Console.Write("Enter a number: ");      
+       n= int.Parse(Console.ReadLine());     
+       while(n>0)      
+       {      
+        m=n%10;      
+        sum=sum+m;      
+        n=n/10;      
+       }      
+       Console.Write("Sum is= "+sum);       
+     }  
+  } 
+
+7.armstrong num
+
+using System;  
+  public class ArmstrongExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+       int  n,r,sum=0,temp;      
+       Console.Write("Enter the Number= ");      
+       n= int.Parse(Console.ReadLine());     
+       temp=n;      
+       while(n>0)      
+       {      
+        r=n%10;      
+        sum=sum+(r*r*r);      
+        n=n/10;      
+       }      
+       if(temp==sum)      
+        Console.Write("Armstrong Number.");      
+       else      
+        Console.Write("Not Armstrong Number.");      
+      }  
+  }  
+
