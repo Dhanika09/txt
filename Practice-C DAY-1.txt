@@ -1,0 +1,306 @@
+                 Practice-C Day-1
+
+1. C Program to copy the elements of one array into another array.
+
+#include <stdio.h>
+
+int main() {
+    
+    int n, i, arr1[100], arr2[100];
+    
+    printf("Input the number of elements to be stored in the array: ");
+    scanf("%d", &n);
+    
+    printf("Input %d elements in the array:\n", n);
+    for(i = 0; i < n; i++) {
+        printf("element - %d : ", i);
+        scanf("%d", &arr1[i]);
+    }
+    
+    // copy elements of sourceArray into destinationArray
+
+    for(i = 0; i < n; i++) {
+        arr2[i] = arr1[i];
+    }
+    
+    printf("The elements stored in the first array are : \n");
+    for(i = 0; i < n; i++) {
+        printf("%d ", arr1[i]);
+    }
+    
+    printf("\nThe elements copied into the second array are : \n");
+    for(i = 0; i < n; i++) {
+        printf("%d ", arr2[i]);
+    }
+    
+    return 0;
+}
+
+______________________________________________________________
+
+
+2.C Program to find the maximum and minimum element in an array.
+
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, max, min;
+    
+    // Read the number of elements in the array
+
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+    
+    // Read the elements of the array
+
+    printf("Enter the elements of the array: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+
+    max = arr[0];
+    min = arr[0];
+    for (i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    
+    printf("The maximum element in the array is %d\n", max);
+    printf("The minimum element in the array is %d\n", min);
+    
+    return 0;
+}
+
+___________________________________________________________________
+
+
+3.C Program to separate odd and even integers in separate arrays.
+
+#include <stdio.h>
+
+int main()
+ {
+    int arr1[10], arr2[10], arr3[10];
+    int i,j=0,k=0,n;
+	
+
+       printf("Input the number of elements to be stored in the array :");
+       scanf("%d",&n);
+   
+       printf("Input %d elements in the array :\n",n);
+       for(i=0;i<n;i++)
+            {
+	      printf("element - %d : ", i);
+	      scanf("%d",&arr1[i]);
+	    }
+
+    for(i=0;i<n;i++)
+    {
+	if (arr1[i]%2 == 0)
+	{
+	   arr2[j] = arr1[i];
+	   j++;
+	}
+	else
+	{
+	   arr3[k] = arr1[i];
+	   k++;
+	}
+    }
+
+    printf("\nThe Even elements are : \n");
+    for(i=0;i<j;i++)
+    {
+
+	printf("%d ",arr2[i]);
+    }
+
+    printf("\nThe Odd elements are :\n");
+    for(i=0;i<k;i++)
+    {
+	printf("%d ", arr3[i]);
+    }
+    printf("\n\n");	
+ }
+
+__________________________________________________________________
+
+
+4. Write a program in C to insert New value in the sorted array.
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[50], i, n, new_val, pos;
+
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements of the array in sorted order:\n");
+
+    for(i=0; i<n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the new value to be inserted: ");
+    scanf("%d", &new_val);
+
+    for(i=0; i<n; i++)
+    {
+        if(new_val < arr[i])
+        {
+            pos = i;
+            break;
+        }
+        pos = n;
+    }
+
+    for(i=n; i>pos; i--)
+    {
+        arr[i] = arr[i-1];
+    }
+
+    arr[pos] = new_val;
+
+    n++;
+
+    printf("The array after inserting the new value is:\n");
+
+    for(i=0; i<n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+________________________________________________________________
+
+5.  Program to check if a number is palindrome or not.
+
+#include <stdio.h>
+
+int main() {
+    int num, reverse = 0, remainder, temp;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    temp = num;
+    
+    while (temp != 0)
+    {
+        remainder = temp % 10;
+        reverse = reverse * 10 + remainder;
+        temp /= 10;
+    }
+    
+    if (num == reverse)
+    printf("%d is a palindrome number.", num);
+
+    else
+    printf("%d is not a palindrome number.", num);
+    return 0;
+}
+
+____________________________________________________________
+
+6. C Program to find if a number is prime or not.
+
+#include <stdio.h>
+
+int main() {
+    int num, i, flag = 0;
+    
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+    
+    // 0 and 1 are not prime
+
+    if (num == 0 || num == 1) {
+        printf("%d is not a prime number.\n", num);
+    }
+    else {
+        for (i = 2; i <= num/2; ++i) {
+            // condition for non-prime number
+            if (num % i == 0) {
+                flag = 1;
+                break;
+            }
+        }
+        
+        if (flag == 0) {
+            printf("%d is a prime number.\n", num);
+        }
+        else {
+            printf("%d is not a prime number.\n", num);
+        }
+    }
+    
+    return 0;
+}
+
+_________________________________________________________________
+
+
+7.C Program to print all prime numbers from 1 - 100.
+
+#include<stdio.h>
+
+int main()
+{
+   int i,n=100,j;
+   
+   printf("Enter number: ");
+   scanf("%d", &n);
+   
+   for(i=2;i<=n;i++)
+   {
+       
+   for(j=2;j<=i;j++) {
+       
+       if(i%j == 0){
+           break;
+        }
+        }
+        if(i == j) {
+               
+    printf("%d ",i);
+       }
+   }
+}
+
+________________________________________________________________________________
+
+8.C Program to find factorial of a number.
+
+#include <stdio.h>
+
+int main() {
+    int num, i, fact = 1;
+    
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+    
+    if (num < 0) {
+        printf("Error: Factorial of a negative number does not exist.\n");
+        return 1;
+    }
+    
+    for (i = 1; i <= num; i++) {
+        fact *= i;
+    }
+    
+    printf("Factorial of %d = %d\n", num, fact);
+    
+    return 0;
+}
+
+

@@ -1,0 +1,263 @@
+                  Practice-C Day-2
+
+1.Pattern Programs using for loops:
+
+*
+**
+***
+****
+
+#include <stdio.h>
+
+int main() {
+    int i, j, n=4;
+
+    for (i = 1; i <= 4; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+_______________________________________________________
+
+1
+12
+123
+1234
+
+#include <stdio.h>
+
+int main() {
+    int i, j, n=4;
+
+    for (i = 1; i <= 4; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+__________________________________________________________
+
+1 
+22
+333
+4444
+
+#include <stdio.h>
+
+int main() {
+    int i, j, n=4;
+
+    for (i = 1; i <= 4; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d", i);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+_______________________________________________________
+
+1
+2 3
+4 5 6
+7 8 9 10
+
+#include <stdio.h>
+
+int main() {
+    int n=4, i, j, k = 1;
+
+    for (i = 1; i <= 4; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d ", k);
+            k++;
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+
+________________________________________________________
+
+   1 
+  2 3 
+ 4 5 6 
+7 8 9 10 
+
+#include <stdio.h>
+
+int main() {
+    int n = 4 , num = 1; 
+    int i, j , k;
+    
+    for (i = 1; i <= n; i++) {
+        for (int j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+
+        for (k = 1; k <= i; k++) {
+            printf("%d ", num);
+            num++;
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+_________________________________________________________
+
+   * 
+  * * 
+ * * * 
+* * * *
+
+#include <stdio.h>
+
+int main() {
+    int n=4, i, j, k;
+
+
+    for (i = 1; i <= 4; i++) {
+        for (k = 1; k <= 4 - i; k++) {
+            printf(" ");
+        }
+
+        for (j = 1; j <= i; j++) {
+            printf("* ");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+___________________________________________________________
+
+
+2. Write a program in C to add two numbers using pointers.
+
+
+#include <stdio.h>
+
+int main() {
+    int num1, num2, sum;
+    int *ptr1, *ptr2;
+    ptr1 = &num1;
+    ptr2 = &num2;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", ptr1, ptr2);
+
+    sum = *ptr1 + *ptr2;
+
+    printf("Sum of %d and %d is %d\n", *ptr1, *ptr2, sum);
+
+    return 0;
+}
+
+_________________________________________________________________________________
+
+3. Write a program in C to Calculate the length of the string using a pointer.
+
+
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    char *ptr;
+    int length = 0;
+
+    printf("Enter a string: ");
+    scanf(%s" , str);
+
+    ptr = str;  // initialize pointer to the first character of the string
+
+    while (*ptr != '\0') {  // loop until null terminator is reached
+        length++;
+        ptr++;  // move pointer to the next character
+    }
+
+    printf("The length of the string is: %d\n", length);
+
+    return 0;
+}
+
+____________________________________________________________________________
+
+
+4.Write a program in C to print the elements of an array in reverse order. 
+
+
+#include <stdio.h>
+
+int main() {
+    int arr[100];
+    int n, i;
+
+    printf("Enter the total no of elements to be stored in a array: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements of the array:\n ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array in reverse order: ");
+    for (i = n - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+______________________________________________________________________________________
+
+5. Write a C program to check whether a given number is an armstrong number or not.
+
+
+#include<stdio.h>
+
+int main()
+{
+   int num,r,sum=0,temp;
+   
+   printf("Input a number : ");
+   scanf("%d",&num);
+   
+    for(temp=num; num!=0; num=num/10){
+       r=num % 10;
+       sum=sum+(r*r*r);
+   }
+
+    if (sum==temp)
+        printf("%d is an Armstrong number.\n",temp);
+
+    else
+        printf("%d is not an  Armstrong number.\n",temp);
+    
+}
+
+
+
+
+
+
+
+
+
+
