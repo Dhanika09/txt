@@ -1,0 +1,71 @@
+import React from 'react';
+import Image from '../Image/ImageComp.js'
+import "../Cards/Card.css"
+const Card = ({ item, onAdd, onDecrement }) => {
+  return (
+    
+    <div className="card">
+      <Image src={item.image} width ={100} height ={100} alt={item.name} />
+      <h2>{item.name}</h2>
+      <p>Price: {item.price}</p>
+      <p>Quantity: {item.quantity}</p>
+      <button onClick={() => onAdd(item)}>Add to Cart</button>
+      <button onClick={() => onDecrement(item)}>Remove from Cart</button>
+    </div>
+    
+  );
+};
+
+export default Card;
+
+
+// ProductCard.js
+import React, { useState } from 'react';
+import Card from '../Cards/CardComp';
+import Image1 from '../asserts/Image1.jpg'
+import Image2 from '../asserts/Image2.jpg'
+import Image3 from '../asserts/Image3.jpg'
+import Image4 from '../asserts/Image4.jpg'
+import Image5 from '../asserts/Image5.jpg'
+import Image6 from '../asserts/Image6.jpg'
+const ProductCard = () => {
+  const [items, setItems] = useState([
+    { id: 1, image :Image1,name: 'One Plus Nord', price: 30000, quantity: 0 },
+    { id: 2, image :Image2,name: 'Iqoo ', price: 20000, quantity: 0 },
+    { id: 3, image :Image3,name: 'Real Me Narzo', price: 25000, quantity: 0 },
+    { id: 4, image :Image4,name: 'Redmi', price: 20000, quantity: 0 },
+    { id: 5, image :Image5,name: 'Samsung', price: 35000, quantity: 0 },
+    { id: 6, image :Image6,name: 'Pova', price: 10000, quantity: 0 },
+  ]);
+
+  const handleAdd = (item) => {
+    const updatedItems = items.map((i) =>
+      i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+    );
+    setItems(updatedItems);
+  };
+
+  const handleDecrement = (item) => {
+    if (item.quantity > 0) {
+      const updatedItems = items.map((i) =>
+        i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i
+      );
+      setItems(updatedItems);
+    }
+  };
+
+  return (
+    <div>
+      {items.map((item) => (
+        <Card
+          key={item.id}
+          item={item}
+          onAdd={handleAdd}
+          onDecrement={handleDecrement}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ProductCard;

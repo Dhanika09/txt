@@ -1,0 +1,59 @@
+React Js 
+
+*ReactJS is an open-source JavaScript library used to create user interfaces in a declarative and efficient way.
+
+*Document Object Model (DOM) is an application programming interface(API) for HTML and XML documents.
+
+*It defines the logical structure of documents and how a document is accessed and manipulated). 
+
+*To make it faster, React implements a virtual DOM which is basically a DOM tree representation in JavaScript, and React was invented.
+
+*React creates a virtual DOM in memory to update the browser’s DOM.
+
+*The virtual DOM will try to find the most efficient way to update the browser’s DOM.
+
+*React DOM takes care of updating the DOM to match the React elements. 
+
+*JSX stands for JavaScript XML.
+
+*JSX is basically a syntax extension of JavaScript.
+
+*Using JSX is not compulsory but it is highly recommended for programming in React as it makes the development process easier as the code becomes easy to write and read. 
+
+*JSX creates an element in React that gets rendered in the UI.
+
+
+*It is transformed into JavaScript functions by the compiler at runtime. 
+
+*Error handling and warnings become easier to handle when using JSX
+
+*const ele = <h1>This is sample JSX</h1>;
+
+*It is faster than normal JavaScript as it performs optimizations while translating to regular JavaScript.
+
+*It makes it easier for us to create templates.
+
+*As JSX is an expression, we can use it inside of if statements and for loops, assign it to variables, accept it as arguments, or return it from functions.
+
+*import React from 'react';
+import ReactDOM from 'react-dom';
+  
+const name = "Learner";
+  
+const element = <h1>Hello, 
+{ name }.Welcome to GeeksforGeeks.< /h1>;
+   
+ReactDOM.render(
+    element, 
+    document.getElementById("root")
+);
+
+
+react functional js is 
+
+node js and npn - download
+
+create react app
+
+code . in terminaL TO OPEN VS CODE
+

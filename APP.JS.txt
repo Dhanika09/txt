@@ -1,0 +1,26 @@
+APP.JS
+
+import logo from './logo.svg';
+import './Topbar/HeaderComp.css';
+
+import ImageComp from './components/ImageComp';
+import IconComp from './components/IconComp';
+import InputComp from './components/InputComp';
+
+
+function App() {
+  return (
+    <>
+    <div className="App">
+        <ImageComp name = "logo"/>
+        <InputComp name ="Input"/>
+        <IconComp name = "Icon"/>
+    </div>
+    </>
+  );
+}
+
+export default App;
+
+
+

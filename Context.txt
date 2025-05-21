@@ -1,0 +1,194 @@
+//CartContext.js
+
+import React, { createContext, useContext, useState } from 'react';
+
+const CartContext = createContext();
+
+export const useCart = () => {
+  return useContext(CartContext);
+};
+
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const removeFromCart = (productId) => {
+    setCart(cart.filter((product) => product.id !== productId));
+  };
+
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+
+//ProductCard.js
+
+import React, { useEffect, useState } from 'react';
+import Card from './CardComp';
+import { useCart } from '../CartContext';
+
+const ProductCard = () => {
+  const [products, setProducts] = useState([]);
+  const { addToCart, removeFromCart } = useCart();
+
+  useEffect(() => {
+    
+    fetch('https://fakestoreapi.com/products')
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      
+  }, []);
+
+  const handleAdd = (product) => {
+    addToCart(product);
+    
+  };
+
+  const handleRemove = (productId) => {
+    removeFromCart(productId);
+    
+  };
+
+  return (
+    <div>
+      {products.map((product) => (
+        <Card
+          key={product.id}
+          item={product}
+          onAdd={() => handleAdd(product)}
+          onDecrement={() => handleRemove(product.id)}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ProductCard;
+
+//CardComp.js
+
+import React from 'react';
+import Image from '../Image/ImageComp.js'
+import "./Card.css"
+const Card = ({ item, onAdd, onDecrement }) => {
+  return (
+    
+    <div className="card">
+      <Image src={item.image} width ={286} height ={180}/>
+      <h2>{item.name}</h2>
+      <p className='descript'>Description : {item.description}</p>
+      <p>Price: ${item.price}</p>
+      <div className = 'button'>
+      <button className = "cardbutton" onClick={() => onAdd(item)}>Add to Cart</button>
+      <button className = "cardbutton" onClick={() => onDecrement(item)}>Remove from Cart</button>
+      </div>
+    </div>
+    
+  );
+};
+
+export default Card;
+
+//Badge.js
+
+import React from 'react';
+
+const Badge = ({ count }) => {
+  return (
+    <div className="badge">
+      {count >= 0 && <span className="badge-count">{count}</span>}
+    </div>
+  );
+};
+
+export default Badge;
+
+//App.js
+
+import "./App.css"
+import Header from './components/Header/Header';
+import Hamburger from './components/NavBar/Hamburger';
+import NavItems from './components/NavBar/NavItems';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Links/Home';
+import ProductCard from "./components/ProductItems/ProductCard"
+import { useState } from "react";
+import { CartProvider } from './components/CartContext';
+
+function App() {
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  
+  const updateTotalQuantity = (quantityChange) => {
+    setTotalQuantity(totalQuantity + quantityChange);
+  };
+
+  return (
+    <>
+    <CartProvider>
+      <div className='Header'><Header/>
+      </div>
+      <div className="navbar"><Hamburger/><NavItems name = "nav"/></div>
+      <div className="App">
+      <Routes>
+        <Route path="/" element={<Home/>} />
+      </Routes>
+      </div>
+      <div className="product">
+        <h1 className="h1">Our Products</h1>
+        <ProductCard updateTotalQuantity={updateTotalQuantity} />
+     </div>
+    </CartProvider>
+    </>
+  );
+}
+
+export default App;
+
+
+
+import React, { useEffect, useState } from 'react';
+import Card from './CardComp';
+import { useCart } from '../CartContext';
+
+const ProductCard = () => {
+  const [products, setProducts] = useState([]);
+  const { addToCart, removeFromCart } = useCart();
+
+  useEffect(() => {
+    
+    fetch('https://fakestoreapi.com/products')
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      
+  }, []);
+
+  return (
+    <div>
+      {products.map((product) => (
+        <Card
+          key={product.id}
+          item={product}
+          onAdd={() => addToCart(product)}
+          onDecrement={() => removeFromCart(product.id)}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ProductCard;
+
+
+
+

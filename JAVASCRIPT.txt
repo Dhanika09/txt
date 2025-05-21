@@ -1,0 +1,103 @@
+JAVASCRIPT
+
+
+1.arrow functions  
+
+*Arrow functions are introduced in ES6, which provides you a more accurate way to write the functions in JavaScript.
+*They allow us to write smaller function syntax. Arrow functions make your code more readable and structured.
+*Arrow functions are anonymous functions i.e. functions without a name but they are often assigned to any variable. They are also called Lambda Functions.
+
+
+<script>
+let hello = "";
+
+hello = () => {
+  return "Hello World!";
+}
+
+document.getElementById("demo").innerHTML = hello();
+</script>
+
+
+Return value by default 
+
+<script>
+let hello = "";
+
+hello = () => "Hello World!";
+
+document.getElementById("demo").innerHTML = hello();
+</script>
+
+With Parameters 
+
+<script>
+let hello = "";
+
+hello = (val) => "Hello " + val;
+
+document.getElementById("demo").innerHTML = hello("Universe!");
+</script>
+
+Without Parameters 
+<script>
+let hello = "";
+
+hello = val => "Hello " + val;
+
+document.getElementById("demo").innerHTML = hello("Universe!");
+</script>
+
+2.call apply and bind methods differences
+
+The call and apply methods set this to a function and call the function.
+The bind method will only set this to a function. We will need to separately invoke the function.
+
+call : 
+The call method binds the this value to the function and executes the function. It takes the this value and a list of arguments as parameters. Then, it returns the value returned by the function, which is called using the call method.
+
+function test(arg1, arg2){
+  console.log(this.num, arg1, arg2); // 100, 10, 20
+}
+
+test.call({num: 100}, 10, 20);
+
+
+In the code above, we have called the test function using the call method. The call method will invoke the test function with the this value as the object passed to the call method.
+
+apply : 
+
+The apply method binds the this value to the function and executes the function. It takes the this value and a single array object as parameters, and it returns the value returned by the function, which is called using the apply method.
+
+function test(...arguments){
+  console.log(this.num, arguments);//100, [1,2,3]
+}
+
+test.apply({num: 100}, [1,2,3]); 
+
+In the code above, we have called the test function using the apply method and with the this value as the object passed to the apply method.
+
+bind : 
+
+The bind method binds the this value to the function and returns a new function. However, we still need to separately invoke the returned function.
+
+function test(arg){
+ console.log(this.number, arg);
+}
+
+let bindedFn = test.bind({number: 99}, "argument");
+
+bindedFn(); // 99, "argument"
+
+In the above code, we bind the this value for the test function and invoke the returned function from the bind method.
+
+call: binds the this value, invokes the function, and allows you to pass a list of arguments.
+
+apply: binds the this value, invokes the function, and allows you to pass arguments as an array.
+
+bind: binds the this value, returns a new function, and allows you to pass in a list of arguments.
+
+
+3.how to make an api call
+
+

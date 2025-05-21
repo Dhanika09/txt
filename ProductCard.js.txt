@@ -1,0 +1,47 @@
+// ProductCard.js
+import React, { useState } from 'react';
+import Card from './CardComp';
+import ProductWrap from './ProductWrap';
+
+
+const ProductCard = ({ updateTotalQuantity }) => {
+  const [items, setItems] = useState(ProductWrap);
+
+  const handleAdd = (item) => {
+    const updatedItems = items.map((i) =>
+      i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+    );
+    setItems(updatedItems);
+    updateTotalQuantity(calculateTotalQuantity(updatedItems));
+  };
+
+  const handleDecrement = (item) => {
+    if (item.quantity > 0) {
+      const updatedItems = items.map((i) =>
+        i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i
+      );
+      setItems(updatedItems);
+      updateTotalQuantity(calculateTotalQuantity(updatedItems));
+    }
+  };
+
+  const calculateTotalQuantity = (items) => {
+    return items.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  return (
+    <div>
+      {items.map((item) => (
+        <Card
+          key={item.id}
+          item={item}
+          onAdd={handleAdd}
+          onDecrement={handleDecrement}
+        />
+      ))}
+      
+    </div>
+  );
+};
+
+export default ProductCard;
