@@ -1,0 +1,175 @@
+                      Practice-3
+
+
+3. Write a program in C to find the length of a string without using string library functions like strcat, strcpy, strlen etc.
+
+
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int len = 0;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    // iterate through the string until null character is reached
+    while (str[len] != '\0') {
+        len++;
+    }
+
+    printf("Length of the string is %d", len);
+
+    return 0;
+}
+
+
+_______________________________________________________________________________________________________________________________________________
+
+
+4. Write a C program to check whether a given substring is present in the given string.
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100], sub[50];
+
+    printf("Input string: ");
+    scanf("%s", str);
+
+    printf("substring: ");
+    scanf(" %s", sub);
+
+    if (strstr(str, sub) != NULL) {
+        printf("'%s' is present in '%s'", sub, str);
+    } else {
+        printf("'%s' is not present in '%s'", sub, str);
+    }
+
+    return 0;
+}
+_____________________________________________________________________________________________________________________________________________
+
+
+
+7. C Program to demonstrate function pointer.
+
+
+#include <stdio.h>
+
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+int division(int a, int b);
+
+int main()
+{
+    int a = 10, b = 5, result;
+    int (*func_ptr)(int, int);  // Declare a function pointer
+
+    // Initialize the function pointer to point to the add function
+    func_ptr = &add;
+
+    // Call the function through the function pointer
+    result = (*func_ptr)(a, b);
+    printf("Result of add function: %d\n", result);
+
+    // Initialize the function pointer to point to the subtract function
+    func_ptr = &subtract;
+
+    // Call the function through the function pointer
+    result = (*func_ptr)(a, b);
+    printf("Result of subtract function: %d\n", result);
+
+    // Initialize the function pointer to point to the multiply function
+    func_ptr = &multiply;
+
+    // Call the function through the function pointer
+    result = (*func_ptr)(a, b);
+    printf("Result of multiply function: %d\n", result);
+    
+    func_ptr = &division;
+
+    // Call the function through the function pointer
+    result = (*func_ptr)(a, b);
+    printf("Result of division function: %d\n", result);
+
+    return 0;
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+int division(int a , int b)
+{
+    return a / b;
+}
+
+
+___________________________________________________________________________________________________________________________________________________
+
+
+8. C program to demonstrate array of function pointers.
+
+
+#include <stdio.h>
+
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+int division(int a, int b);
+
+
+int main()
+{
+    int a = 10, b = 5, result, i;
+    int (*func_ptr[4])(int, int);  // Declare an array of function pointers
+
+    // Initialize the array of function pointers with the addresses of the three functions
+    func_ptr[0] = &add;
+    func_ptr[1] = &subtract;
+    func_ptr[2] = &multiply;
+    func_ptr[3] = &division;
+
+    // Call each function through the array of function pointers
+    for (i = 0; i < 4; i++) {
+        result = (*func_ptr[i])(a, b);
+        printf("Result of function %d: %d\n", i+1, result);
+    }
+
+    return 0;
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+int division(int a, int b)
+{
+    return a / b;
+}

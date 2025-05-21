@@ -1,0 +1,311 @@
+                       Practice-Day-3
+
+1. Write a program in C to count the number of vowels and consonants in a string using a pointer. 
+
+
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    char *p;
+    int v=0 ,c=0;
+    
+    printf("Enter any string: ");
+    scanf("%s",str);
+    
+    p = str;
+    
+    while(*p !='\0') {
+        if(*p =='A' || *p =='E'|| *p =='I'|| *p =='O' || *p =='U' || *p == 'a' || *p == 'e' || *p == 'i' || *p == 'o' || *p == 'u')
+            v++;
+        else
+            c++;
+
+        //increase the pointer,to point next character
+
+        p++;
+    }
+
+    printf("\n vowel count in string is : %d",v);
+    printf("\nconsonant count in string is : %d",c);
+    
+}
+
+_________________________________________________________________________________________________________________________________________________
+
+
+2. Write a program in C to show how a function returns a pointer.
+
+
+#include <stdio.h>
+
+int* max(int *x, int *y) {
+    if (*x > *y) {
+        return x;
+    } else {
+        return y;
+    }
+}
+
+int main() {
+    int a = 10, b = 20;
+    int *result = max(&a, &b);
+
+    printf("The maximum value is %d\n", *result);
+
+    return 0;
+}
+
+__________________________________________________________________________________________________________________________________________________
+
+
+3. Write a program in C to find the length of a string without using string library functions like strcat, strcpy, strlen etc.
+
+
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int len = 0;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    // iterate through the string until null character is reached
+    while (str[len] != '\0') {
+        len++;
+    }
+
+    printf("Length of the string is %d", len);
+
+    return 0;
+}
+
+
+_______________________________________________________________________________________________________________________________________________
+
+
+4. Write a C program to check whether a given substring is present in the given string.
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100], sub[50];
+
+    printf("Input string: ");
+    scanf("%s", str);
+
+    printf("substring: ");
+    scanf(" %s", sub);
+
+    if (strstr(str, sub) != NULL) {
+        printf("'%s' is present in '%s'", sub, str);
+    } else {
+        printf("'%s' is not present in '%s'", sub, str);
+    }
+
+    return 0;
+}
+_____________________________________________________________________________________________________________________________________________
+
+
+5. Write a program in C to Concatenate two strings without using string fns.
+
+
+#include <stdio.h>
+
+int main() {
+    char str1[100], str2[100], new_str[200];
+    int i, j;
+
+    printf("Input string1: ");
+    scanf("%s", str1);
+
+    printf("Input string2: ");
+    scanf(" %s", str2);
+
+    // copy characters of first string to new string
+    for (i = 0; str1[i] != '\0'; i++) {
+        new_str[i] = str1[i];
+    }
+
+    // copy characters of second string to new string
+    for (j = 0; str2[j] != '\0'; j++) {
+        new_str[i+j] = str2[j];
+    }
+
+    new_str[i+j] = '\0'; // add null character at the end
+
+    printf("Concatenated string: %s", new_str);
+
+    return 0;
+}
+
+____________________________________________________________________________________________________________________________________________________
+
+
+6.Write a program in C to read a file and remove the spaces between two words of its content.
+
+
+#include<stdio.h>
+
+void main(){
+    int i, j;
+    char str[100]="My name is Laskar Dhanika";
+
+
+for (i = 0; str[i] != 0; i++){
+    while (str[i] == ' ' )
+    {
+        for (j = i; str[j] != 0; j++)
+        {
+            str[j] = str[j + 1];
+            
+        }
+        str[j] = '\0';
+        
+    }
+}
+printf("%s", str);
+
+}
+
+________________________________________________________________________________________________________________________________________________
+
+7. C Program to demonstrate function pointer.
+
+
+#include <stdio.h>
+
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+int division(int a, int b);
+
+int main()
+{
+    int a = 10, b = 5, result;
+    int (*func_ptr)(int, int);  // Declare a function pointer
+
+    // Initialize the function pointer to point to the add function
+    func_ptr = &add;
+
+    // Call the function through the function pointer
+
+    result = (*func_ptr)(a, b);
+    printf("Result of add function: %d\n", result);
+
+    // fn-ptr to the subtract function
+    func_ptr = &subtract;
+
+    
+    result = (*func_ptr)(a, b);
+    printf("Result of subtract function: %d\n", result);
+
+    // fn-ptr to the multiply function
+    func_ptr = &multiply;
+
+    
+    result = (*func_ptr)(a, b);
+    printf("Result of multiply function: %d\n", result);
+
+
+    // fn-ptr to the multiply function
+    func_ptr = &division;
+
+    result = (*func_ptr)(a, b);
+    printf("Result of division function: %d\n", result);
+
+    return 0;
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+int division(int a , int b)
+{
+    return a / b;
+}
+
+
+___________________________________________________________________________________________________________________________________________________
+
+
+8. C program to demonstrate array of function pointers.
+
+
+#include <stdio.h>
+
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+int division(int a, int b);
+
+
+int main()
+{
+    int a = 10, b = 5, result, i;
+    int (*func_ptr[4])(int, int);  // Declare an array of function pointers
+
+    // Initialize the array of function pointers with the addresses of the four functions
+    func_ptr[0] = &add;
+    func_ptr[1] = &subtract;
+    func_ptr[2] = &multiply;
+    func_ptr[3] = &division;
+
+    // Call each function through the array of function pointers
+    for (i = 0; i < 4; i++) {
+        result = (*func_ptr[i])(a, b);
+        printf("Result of function %d: %d\n", i+1, result);
+    }
+
+    return 0;
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+int division(int a, int b)
+{
+    return a / b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

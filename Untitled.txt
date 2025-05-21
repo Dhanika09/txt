@@ -1,0 +1,103 @@
+
+import React, { useState } from 'react';
+import Card from '../Cards/CardComp';
+import Image1 from '../asserts/Image1.jpg'
+import Image2 from '../asserts/Image2.jpg'
+import Image3 from '../asserts/Image3.jpg'
+import Image4 from '../asserts/Image4.jpg'
+import Image5 from '../asserts/Image5.jpg'
+import Image6 from '../asserts/Image6.jpg'
+const ProductCard = () => {
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1);
+  };
+
+  const handleRemoveFromCart = () => {
+    if (cartCount > 0) {
+      setCartCount(cartCount - 1);
+    }
+  };
+
+  return (
+    <div className="product-card">
+      <p>Items in Cart: {cartCount}</p>
+      <Card
+        item = {Image1}
+        title="OnePlus Nord"
+        description="Description of Product 1"
+        price={30000}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
+      <Card
+        item = {Image2}
+        title="IQOO"
+        description="Description of Product 2"
+        price={20000}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
+      <Card
+        item ={Image3}
+        title="Real ME Narzo"
+        description="Description of Product 3"
+        price={30000}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
+      <Card
+        item = {Image4}
+        title="Redmi"
+        description="Description of Product 1"
+        price={10000}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
+      <Card
+        item = {Image5}
+        title="Samsung"
+        description="Description of Product 1"
+        price={15000}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
+      <Card
+       item = {Image6}
+        title="Pova"
+        description="Description of Product 1"
+        price={20000}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
+    </div>
+  );
+};
+
+export default ProductCard;
+
+
+
+import React from 'react';
+import Image from '../Image/ImageComp.js'
+import "../Cards/Card.css"
+const Card = ({item,title, description, price, onAddToCart, onRemoveFromCart }) => {
+  return (
+    
+    <div className="card">
+      <Image src={item} width ={100} height ={100} alt={item} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <p>Price: {price}</p>
+      <button onClick={onAddToCart}>Add to Cart</button>
+    </div>
+    
+  );
+};
+
+export default Card;
+
+
+
+
