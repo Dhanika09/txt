@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main()
+{
+   char str[10] = {"Dhanika"};
+   char *p;
+   
+   p = str;
+   
+   printf("\nEnter string is :: ");
+   
+   while(*p !='\0')
+   printf("%c",*p++);
+   return 0;
+}

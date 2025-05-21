@@ -1,0 +1,29 @@
+#include <stdio.h>
+ 
+int main()
+{
+  	char str[100] = "cap1234$";
+  	int i, alpha, numerics, special;
+  	i = alphabets = numerics = special = 0;
+ 
+  	
+  	while (str[i] != '\0')
+  	{
+  		if( (str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+  		{
+  			alpha++;  	
+ 		}
+  		else if (str[i] >= '0' && str[i] <= '9')
+  		{
+  			numerics++;  	
+  		}    
+  		else
+    		special++;
+    	i++;
+	}
+    printf("\n Number of Alphabets in this String = %d", alpha);  
+	printf("\n Number of Numerics in this String = %d", numerics);  
+	printf("\n Number of Special Characters in this String = %d", special);  	
+  
+  	return 0;
+}

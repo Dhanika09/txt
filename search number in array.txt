@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(){
+    int arrayNumber[4] = {10,20,30,40};
+    int searchNumber;
+    
+    printf("enter number that you want to search ");
+    scanf("%d", &searchNumber);
+    
+    for(int i=0 ; i<4 ; i++){
+        if(arrayNumber[i] == searchNumber) {
+            printf("Number is found at %d position", i+1);
+            break;
+        }
+    }
+    
+   return 0;
+}

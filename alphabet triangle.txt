@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main()
+{
+    int i=0,j,k,rows,alphabet;
+    printf("Enter rows = ");
+    scanf("%d",&rows);
+    
+    while (i < rows)
+    {
+        alphabet = 65;
+        j = rows;
+        while(j > i)
+        {
+            printf(" ");
+            j--;
+        }
+        k = 0;
+        while(k <= i)
+        {
+            printf("%c",alphabet + k);
+            k++;
+        }
+        printf("\n");
+        i++;
+    }
+    
+   return 0;
+}

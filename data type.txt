@@ -1,0 +1,24 @@
+#include<stdio.h>  
+ void main()    
+{    
+ char ch,*chp;
+ float ff,*fp;
+ int i,*ip;
+ double lf,*lfp;
+ 
+ printf("Enter character:");
+ scanf("%c",&ch);
+ ++ch;
+ 
+ printf("\nEnter float:");
+ scanf("%f",&ff);
+ ++ff;
+ 
+ printf("\nEnter integer:");
+ scanf("%d",&i);
+ ++i;
+ 
+ chp=&ch;
+ fp=&ff;
+ ip=&i;
+}   

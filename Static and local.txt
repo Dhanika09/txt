@@ -1,0 +1,27 @@
+#include<stdio.h>
+int test()
+{
+  static int count = 0;
+  count++;
+  return count;
+}
+  
+int main()
+{
+    int num1 = 10;
+    int num2 = 20; 
+
+    printf("'n\n", num1, num2);
+
+    {
+        // num1 and num2 are accessible within inner block
+        int sum = num1 + num2;
+
+        printf("sum = %d\n", sum);
+    }
+
+    // sum is declared inside inner block hence is not accessible to outer block
+    // printf("sum = %d\n", sum);
+
+    return 0;
+}

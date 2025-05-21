@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <h1>Employee Interests Survey form</h1>
+</head>
+<body>
+    
+     <div>
+      <label>Enter your name:</label>
+      <input>
+     </div>
+     
+     <br>
+     <div>
+      <label>Enter your department:</label>
+      <input>
+     </div>
+     </br>
+     
+     <br>
+     <div>
+      <label>Tell us a little about yourself:</label>
+      <input>
+     </div>
+     </br>
+     
+     <div class="form-control">
+            <label>
+                Do you exercise at home?
+            </label>
+ 
+            <label for="Yes">
+                <input type="radio"
+                       name="Yes">Yes</input>
+            </label>
+            <label for="NO">
+                <input type="radio"
+                       name="No">No</input>
+            </label>
+            
+<p>How do you like to read about your favorite topics?</p>
+   <div class="form-control">
+          
+            <label for="inp-1">
+                <input type="checkbox"
+                       name="inp">Books</input>
+            </label>
+            
+            <label for="inp-2">
+                <input type="checkbox"
+                       name="inp">Online resources</input>
+            </label>
+            
+            <label for="inp-3">
+                <input type="checkbox"
+                       name="inp">Phone apps</input>
+            </label>
+            
+            <label for="inp-4">
+                <input type="checkbox"
+                       name="inp">Magazines</input>
+            </label>
+   </div>
+   <br>
+   <div class="form-control">
+            <label for="role" id="label-role">
+                What genre of movies do you like?
+            </label>
+            
+            <select name="role" >
+                <option value="comedy">Comedy</option>
+                <option value="thriller">Thriller</option>
+                <option value="horror">Horror</option>
+                <option value="other">Other</option>
+            </select>
+    </div>
+    </br>
+  
+        
+        <button type="submit" value="submit">
+            Submit
+        </button>
+</body>
+</html>

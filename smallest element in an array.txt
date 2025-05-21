@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+
+int main()
+{
+   int arr[10],small,i;
+   
+   printf("Enter 5 Array elements: \n");
+   for(i=0;i<5;i++)
+       scanf("%d",&arr[i]);
+   i=0;
+   small=arr[i];
+   while(i<5)
+   {
+       if(small>arr[i])
+       small = arr[i];
+       i++;
+   }
+   printf("\n Smallest Number = %d",small);
+   getch();
+   return 0;
+}

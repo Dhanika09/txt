@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    int i, j,count,temp,num[30];
+    
+    printf("Enter number of elements : ");
+    scanf("%d",&count);
+    
+    printf("Enter %d elements: ",count);
+    
+    for(i=0;i<count;i++)
+    scanf("%d",&num[i]);
+    
+    //Selection sort
+    for(i=0;i<count;i++){
+        for(j=i+1;j<count;j++){
+            if(num[i]>num[j]) {
+                temp=num[i];
+                num[i]=num[j];
+                num[j]=temp;
+    //Bubble sort           
+    for(i=count-2;i>=0;i--){              
+        for(j=0;j<=i;j++){
+            if(num[j]>num[j+1]) {
+                temp=num[j];
+                num[j]=num[j+1];
+                num[j+1]=temp;
+            }
+        }
+    }
+
+    //Insertion sort
+    
+    for(i=0;i<count;i++){
+        temp=num[i];
+        j=i-1;
+        while((temp<num[j])&&(j>=0)){
+          num[j+1]=num[j];
+              j=j-1;
+    
+        }
+        num[j+1] = temp;
+    }
+    
+    
+    printf("Sorted elements: ");
+    for(i=0;i<count;i++)
+    printf(" %d",num[i]);
+    
+    return 0;
+}

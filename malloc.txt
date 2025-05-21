@@ -1,0 +1,13 @@
+ int*p,i;
+   p = malloc(3*sizeof(int));
+   
+   for (i= 0;i<3;++i)
+    *(p+i)=i*3;
+   
+   {
+       printf("%d\n",*(p+i));
+       
+       free(p+i);
+      
+       
+   } 

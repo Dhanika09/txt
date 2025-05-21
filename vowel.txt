@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main()
+{
+    char str[100] ={"LASKAR DHANIKA"} ;
+    char *p;
+    int c=0;
+    
+    p = str;
+    
+    while(*p !='\0') {
+        if(*p =='A' || *p =='E'|| *p =='I'|| *p =='O' || *p =='U')
+        c++;
+        p++;
+    }
+    printf("\n vowel count in string is : %d",c);
+    
+    
+}
